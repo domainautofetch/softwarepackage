@@ -178,6 +178,22 @@
             .download-container { padding: 14px; margin: 18px 10px; border-radius: 12px; }
             .download-container h2 { font-size: 16px; }
         }
+        /* ✅ 新增部分：给 “注册即送会员” 增加动态 hover 效果 */
+        #registerBtn {
+            display: inline-block;
+            color: #fff;
+            text-decoration: underline;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        #registerBtn:hover {
+            color: #ffeb3b; /* 金黄色高亮 */
+            text-shadow: 0 0 8px rgba(255, 235, 59, 0.8);
+            transform: scale(1.06);
+            text-decoration: none;
+        }
+        /* ✅ ↑↑↑ 增加在这里，放在 style 末尾即可 */
     </style>
 </head>
 <body>
@@ -205,9 +221,9 @@
 
 <!-- 福利 -->
 <div class="highlight">
-    🎁 <a id="registerBtn" href="javascript:void(0);" style="color:#fff;text-decoration:underline;">
-    注册即送会员,首月免費使用
-</a><br>
+    🎁 <a id="registerBtn" href="javascript:void(0);">
+        注册即送会员,首月免費使用
+    </a><br>
     后续，最低消费仅 1 元 · 按需计费
 </div>
 
