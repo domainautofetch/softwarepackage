@@ -59,8 +59,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.28);
         }
 
+        /* 原基础样式 */
         .highlight {
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            background: linear-gradient(90deg, #ff416c, #ff4b2b); /* 红色渐变背景 */
             margin: 30px 20px;
             padding: 20px;
             border-radius: 12px;
@@ -68,6 +69,38 @@
             font-weight: bold;
             color: #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+            position: relative; /* 为后面的动态背景做定位 */
+            overflow: hidden;
+            transition: all 0.4s ease; /* 添加平滑动画 */
+        }
+
+        /* ✅ 动态悬停效果部分 */
+        .highlight::before {
+            /* 背景光晕层 */
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                    120deg,
+                    rgba(255, 255, 255, 0.25),
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.25)
+            );
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 1s ease, opacity 0.6s ease;
+        }
+
+        /* 鼠标悬停时的动态动画效果 */
+        .highlight:hover {
+            transform: translateY(-4px); /* 微微上浮 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.55); /* 阴影增强 */
+        }
+
+        /* 背景光滑滑动动画 */
+        .highlight:hover::before {
+            opacity: 1;
+            transform: translateX(100%);
         }
 
         .cta {
@@ -178,22 +211,6 @@
             .download-container { padding: 14px; margin: 18px 10px; border-radius: 12px; }
             .download-container h2 { font-size: 16px; }
         }
-        /* ✅ 新增部分：给 “注册即送会员” 增加动态 hover 效果 */
-        #registerBtn {
-            display: inline-block;
-            color: #fff;
-            text-decoration: underline;
-            font-weight: 700;
-            transition: all 0.25s ease;
-        }
-
-        #registerBtn:hover {
-            color: #ffeb3b; /* 金黄色高亮 */
-            text-shadow: 0 0 8px rgba(255, 235, 59, 0.8);
-            transform: scale(1.06);
-            text-decoration: none;
-        }
-        /* ✅ ↑↑↑ 增加在这里，放在 style 末尾即可 */
     </style>
 </head>
 <body>
@@ -221,8 +238,8 @@
 
 <!-- 福利 -->
 <div class="highlight">
-    🎁 <a id="registerBtn" href="javascript:void(0);">
-    注册店主即送会员,首月免費使用
+    🎁 <a id="registerBtn" href="javascript:void(0);" style="color:#fff;text-decoration:underline;">
+    注册店主即送会员,30天内免費使用
 </a><br>
     后续，最低消费仅 1 元 · 按需计费
 </div>
@@ -243,7 +260,7 @@
 <div class="download-item"><a href="https://domainautofetch.github.io/softwarepackage/2025/10/com.fastaiticket.fjapp_debug_v1.0.4V251014094233.apk" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>📱</span> 安卓下载 <span class='file-size'>(8.04 MB)</span></a></div>
 <div class="download-item"><a href="http://47.242.251.131:9000" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>🍎</span> 苹果打开 <span class='file-size'>(5.88MB)</span></a></div>
     </div>
-    <div class="update-time">更新日期: 2025-10-15 09:03:32</div>
+    <div class="update-time">更新日期: 2025-10-15 09:21:08</div>
 </div>
 
 <script>
