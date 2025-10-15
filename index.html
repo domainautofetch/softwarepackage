@@ -72,6 +72,12 @@
             position: relative; /* 为后面的动态背景做定位 */
             overflow: hidden;
             transition: all 0.4s ease; /* 添加平滑动画 */
+            cursor: pointer; /* ✅ 整块可点击 */
+        }
+        /* 去掉文字下划线 */
+        .highlight a {
+            color: #fff;
+            text-decoration: none;
         }
 
         /* ✅ 动态悬停效果部分 */
@@ -279,11 +285,9 @@
 </div>
 
 <!-- 福利 -->
-<div class="highlight">
+<div class="highlight" id="highlightBox">
     <div class="hand-pointer"><span class="hand">👉</span></div>
-    🎁 <a id="registerBtn" href="javascript:void(0);" style="color:#fff;text-decoration:underline;">
-    注册即送会员,30天内免費使用
-</a><br>
+    🎁 <a id="registerBtn" href="javascript:void(0);">注册即送会员，30天内免費使用</a><br>
     后续，最低消费仅 1 元 · 按需计费
 </div>
 
@@ -303,7 +307,7 @@
 <div class="download-item"><a href="https://domainautofetch.github.io/softwarepackage/2025/10/com.fastaiticket.fjapp_debug_v1.0.4V251014094233.apk" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>📱</span> 安卓下载 <span class='file-size'>(8.04 MB)</span></a></div>
 <div class="download-item"><a href="http://47.242.251.131:9000" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>🍎</span> 苹果打开 <span class='file-size'>(5.88MB)</span></a></div>
     </div>
-    <div class="update-time">更新日期: 2025-10-15 15:36:09</div>
+    <div class="update-time">更新日期: 2025-10-15 16:00:55</div>
 </div>
 
 <script>
@@ -320,23 +324,19 @@
     (function () {
         // 模板动态生成的链接（后台传入）
         var baseUrl = "http://47.242.251.131:9000";  // 例如 http://192.168.0.102:1026
-
         // 获取当前 URL 的 param 参数
         var urlParams = new URLSearchParams(window.location.search);
         var paramValue = urlParams.get("param");
-
         // 先拼上 /#/register
         var finalUrl = baseUrl.replace(/\/+$/, "") + "/#/register";
-
         // 如果有 param，拼接到 query string
         if (paramValue) {
             finalUrl += "?param=" + encodeURIComponent(paramValue);
         }
-
-        // 给按钮绑定点击事件
-        var btn = document.getElementById("registerBtn");
-        if (btn) {
-            btn.addEventListener("click", function () {
+        / 绑定点击事件到整个区域
+        var highlightBox = document.getElementById("highlightBox");
+        if (highlightBox) {
+            highlightBox.addEventListener("click", function () {
                 window.open(finalUrl, "_blank");
             });
         }
