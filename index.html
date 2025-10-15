@@ -72,12 +72,6 @@
             position: relative; /* 为后面的动态背景做定位 */
             overflow: hidden;
             transition: all 0.4s ease; /* 添加平滑动画 */
-            cursor: pointer; /* ✅ 整块可点击 */
-        }
-        /* 去掉文字下划线 */
-        .highlight a {
-            color: #fff;
-            text-decoration: none;
         }
 
         /* ✅ 动态悬停效果部分 */
@@ -217,48 +211,6 @@
             .download-container { padding: 14px; margin: 18px 10px; border-radius: 12px; }
             .download-container h2 { font-size: 16px; }
         }
-        /* === ✨ 新增部分：立体手指动画 === */
-        .hand-pointer {
-            display: inline-block;
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            animation: handMove 1.6s ease-in-out infinite;
-        }
-        .hand {
-            position: relative;
-            display: inline-block;
-            font-size: 32px;
-            text-shadow: 0 2px 3px rgba(0,0,0,0.4);
-            transform-origin: center bottom;
-            animation: handTap 1.2s infinite;
-            filter: drop-shadow(1px 3px 2px rgba(0,0,0,0.3));
-        }
-        .hand::before {
-            content: "👍";
-            position: absolute;
-            left: 0;
-            top: 0;
-            transform: translate(-2px, -1px) scale(1.05);
-            background: linear-gradient(145deg, #ffd27f 0%, #ffb347 50%, #e29b3e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 3px 5px rgba(0,0,0,0.25);
-            opacity: 0.95;
-            animation: thumbPress 1.2s infinite;
-        }
-        @keyframes handMove {
-            0%,100% { transform: translateX(0); }
-            50% { transform: translateX(12px); }
-        }
-        @keyframes handTap {
-            0%,100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(3px) scale(0.95); }
-        }
-        @keyframes thumbPress {
-            0%,100% { transform: translate(-2px, -1px) scale(1.05); filter: brightness(1); }
-            50% { transform: translate(-2px, 1px) scale(0.96); filter: brightness(1.25); }
-        }
     </style>
 </head>
 <body>
@@ -285,15 +237,16 @@
 </div>
 
 <!-- 福利 -->
-<div class="highlight" id="highlightBox">
-    <div class="hand-pointer"><span class="hand">👉</span></div>
-    🎁 <a id="registerBtn" href="javascript:void(0);">注册即送会员，30天内免費使用</a><br>
+<div class="highlight">
+    🎁 <a id="registerBtn" href="javascript:void(0);" style="color:#fff;text-decoration:underline;">
+    注册店主即送会员,30天内免費使用
+</a><br>
     后续，最低消费仅 1 元 · 按需计费
 </div>
 
 <!-- 合作邀请 -->
 <div>
-    <h2>🤝 合作伙伴招募 · 仅限3位 · 轻松月入过万</h2>
+    <h2>🤝 合作伙伴招募 · 仅限3位 · 轻轻松松月入过万</h2>
     <p>无风险 · 无负担 · 越干越轻松，越久越赚钱。
     </p>
     <a href="http://47.242.251.131:9000/#/pages/anonymous/anonymous" class="cta" target="_blank">立即加入</a>
@@ -303,11 +256,11 @@
 <div class="download-container">
     <h2>📥 安装包下载</h2>
     <div class="buttons">
-        <div class="download-item"><a href="https://domainautofetch.github.io/softwarepackage/2025/10/com.fastaiticket.fjapp_debug_v1.0.5V251015182710.apk" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>📱</span> 安卓下载 <span class='file-size'>(8.04 MB)</span></a></div>
-<div class="download-item"><a href="https://domainautofetch1.github.io/softwarepackage/2025/10/com.fastaiticket.fjapp_debug_v1.0.5V251015182710.apk" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>📱</span> 安卓下载 <span class='file-size'>(8.04 MB)</span></a></div>
+        <div class="download-item"><a href="https://domainautofetch1.github.io/softwarepackage/2025/10/com.fastaiticket.fjapp_debug_v1.0.4V251014094233.apk" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>📱</span> 安卓下载 <span class='file-size'>(8.04 MB)</span></a></div>
+<div class="download-item"><a href="https://domainautofetch.github.io/softwarepackage/2025/10/com.fastaiticket.fjapp_debug_v1.0.4V251014094233.apk" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>📱</span> 安卓下载 <span class='file-size'>(8.04 MB)</span></a></div>
 <div class="download-item"><a href="http://47.242.251.131:9000" target="_blank" rel="noopener noreferrer" class="download-btn" style="background:linear-gradient(90deg,#4CAF50,#2ecc71);"><span class='icon'>🍎</span> 苹果打开 <span class='file-size'>(5.88MB)</span></a></div>
     </div>
-    <div class="update-time">更新日期: 2025-10-15 18:27:51</div>
+    <div class="update-time">更新日期: 2025-10-15 20:44:52</div>
 </div>
 
 <script>
@@ -324,19 +277,23 @@
     (function () {
         // 模板动态生成的链接（后台传入）
         var baseUrl = "http://47.242.251.131:9000";  // 例如 http://192.168.0.102:1026
+
         // 获取当前 URL 的 param 参数
         var urlParams = new URLSearchParams(window.location.search);
         var paramValue = urlParams.get("param");
+
         // 先拼上 /#/register
         var finalUrl = baseUrl.replace(/\/+$/, "") + "/#/register";
+
         // 如果有 param，拼接到 query string
         if (paramValue) {
             finalUrl += "?param=" + encodeURIComponent(paramValue);
         }
-       // 绑定点击事件到整个区域
-        var highlightBox = document.getElementById("highlightBox");
-        if (highlightBox) {
-            highlightBox.addEventListener("click", function () {
+
+        // 给按钮绑定点击事件
+        var btn = document.getElementById("registerBtn");
+        if (btn) {
+            btn.addEventListener("click", function () {
                 window.open(finalUrl, "_blank");
             });
         }
